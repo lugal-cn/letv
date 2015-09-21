@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+      <title>兵圣全智（北京）</title>
+
+      <meta charset="utf-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+      
+      <!-- jQuery Mobile -->  
+      
+      <!-- Custom jQuery Mobile themes -->
+      <link rel="stylesheet" href="app/themes/bsqzchina/css/bsqzchina.css?v1" />
+      <link rel="stylesheet" href="app/themes/bsqzchina/jquery.mobile.icons.min.css" />
+      <link rel="stylesheet" href="jquery.mobile.structure-1.4.2.min.css" />
+
+      <script src="jquery-1.9.1.min.js"></script>
+      <script src="jquery.mobile-1.4.2.min.js"></script>
+      
+      <script src="swipe.js"></script>
+      
+      <!-- jDrupal -->
+      <script type="text/javascript" charset="utf-8" src="jdrupal-7.x-1.2.min.js"></script>
+      
+      <!-- DrupalGap -->
+      <script type="text/javascript" charset="utf-8" src="bin/drupalgap-7.x-1.1.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="app/settings.js"></script>
+      <link rel="stylesheet" href="drupalgap.css" />
+      
+      <!-- swiper -->
+      <script type="text/javascript" src="app/modules/custom/bsqzchina/bsqzchina.inline.js?4"></script>
+      
+      <!-- swiper -->
+      <script type="text/javascript" src="app/themes/bsqzchina/js/swiper.min.js"></script>
+      <link rel="stylesheet" href="app/themes/bsqzchina/css/swiper.min.css?4" />
+      
+
+    </head>
+    <body>
+
+      <!-- Mobile Application Splash Screen -->
+      <div id="_drupalgap_splash" data-role="page">
+         <!-- http://www.css-jquery-design.com/2015/04/html5-full-screen-video-page-background/ -->
+         <link rel="stylesheet" href="app/themes/bsqzchina/css/video.css" />
+         <div class="content">
+         <div id="intro" style="display: none;">
+            <h3 style="font-size: 1.2rem;text-align: center;padding: 1.5rem 0px;">＊ 兵圣全智（北京）国际文化传媒有限公司 ＊</h3>
+            <p style="padding: 1.5rem;">兵圣传媒成立以来，始终秉承中国文化经典的理念和美学价值，着眼于全球化的文化传播与互动；整合多元化的艺术、文化、创意资源，吸收、开拓并运用当代传媒新技术、新模式；建立综合性、多维度的创意、传播平台，出品、传播尊重文化，有益生活，促进商业的传媒产品；向世界传播中国当代艺术、文化、生活趋势，同时向中国引进海外优质文化产品。</p>
+            <ul style="padding: 1rem;margin: 1rem;">
+              <li>文化关怀 － 遵循中华经典价值体系，敬畏自然，尊重文化，有益人类</li>
+              <li>迎接挑战 － 在研习经典的基础上，勇于探索新模式、新方法，讲竞争转化为合作</li>
+              <li>脚踏实地 － 善用资源，充分准备，有效落实，追求每一阶段的实至名归</li>
+              <li>长远盈溢 － 永远聚焦于出产好作品，网络好人才，推行好模式</li>
+            </ul>
+            <span><a class="skip-button" onclick="loadDrupalGap();return false;" href="javascript:void(0);">跳过</a></span>
+            </div>
+          </div>
+          
+          <video id="my-video" class="video" autoplay muted loop poster="images/1.pic_hd.jpg">
+            <source src="http://demo.web3designs.com/media/demo.mp4" type="video/mp4">
+          </video>
+          
+          <script>
+          // http://stackoverflow.com/questions/8364313/chrome-html5-video-buffered-end-event
+          myVideoTag = document.getElementById('my-video');
+          myVideoTag.addEventListener('progress', function(e) {
+              var percent = null;
+              // FF4+, Chrome
+              if (myVideoTag && myVideoTag.buffered && myVideoTag.buffered.length > 0 && myVideoTag.buffered.end && myVideoTag.duration) {
+                  percent = myVideoTag.buffered.end(0) / myVideoTag.duration;
+              } 
+              // Some browsers (e.g., FF3.6 and Safari 5) cannot calculate target.bufferered.end()
+              // to be anything other than 0. If the byte count is available we use this instead.
+              // Browsers that support the else if do not seem to have the bufferedBytes value and
+              // should skip to there. Tested in Safari 5, Webkit head, FF3.6, Chrome 6, IE 7/8.
+              else if (myVideoTag && myVideoTag.bytesTotal != undefined && myVideoTag.bytesTotal > 0 && myVideoTag.bufferedBytes != undefined) {
+                  percent = myVideoTag.bufferedBytes / myVideoTag.bytesTotal;
+              }
+
+              if (percent !== null) {
+                  percent = 100 * Math.min(1, Math.max(0, percent));
+                  /* console.log("percent" + percent); */
+                  if (percent > 5) {
+                    console.log("percent" + percent);
+                    $("#welcome-front").hide();
+                    $("#intro").show("slow");
+                  }
+                  // ... do something with var percent here (e.g. update the progress bar)
+              }
+
+          }, false);
+          </script>
+
+<!--
+         <div class="welcome_video">
+            <div class="video-box">
+                <video loop="loop" preload="auto" autoplay="autoplay" src="http://www.chunbo.com/Public/images/welcome.mp4"></video>
+            </div>
+        </div>
+        <span><a onclick="loadDrupalGap();return false;" href="javascript:void(0);">Skip</a></span>
+-->
+      </div>
+
+      <!-- Load DrupalGap -->
+      <script type="text/javascript">
+        function loadDrupalGap() {
+          drupalgap_onload();
+        }
+       /* drupalgap_onload(); */
+      </script>
+
+    </body>
+</html>
+
